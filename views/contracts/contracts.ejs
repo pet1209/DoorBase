@@ -1,0 +1,90 @@
+<div class="content" id="inner">
+  <details open class="item" id="contracts">
+    <summary>
+      <div class="dropdown">
+        <lu><i class="ri-file-list-3-line"></i> Contracts Management</lu
+        ><i class="ri-arrow-down-s-line dropdown__arrow"></i>
+      </div>
+    </summary>
+
+    <ul class="inner">
+      <div class="item">
+        <details>
+          <summary>
+            <div class="dropdown">
+              <lu><i class="ri-file-edit-line"></i>Contracts</lu>
+              <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+            </div>
+          </summary>
+
+          <ul class="inner">
+            <% contracts.forEach(contract => { %> <%- include('getContract', {
+            contract: contract }) %> <% }) %>
+          </ul>
+        </details>
+      </div>
+
+      <div class="item">
+        <details>
+          <summary>
+            <div class="dropdown">
+              <lu><i class="ri-file-edit-line"></i> Add New Contract</lu>
+              <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+            </div>
+          </summary>
+
+          <form>
+            <lu class="section">
+              <strong><label for="name">Name:</label></strong>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Contract Name"
+                required
+              />
+            </lu>
+            <lu class="section">
+              <strong><label for="type">Type:</label></strong>
+              <select id="type" name="type" required>
+                <option value="text">Text</option>
+                <option value="textbox">Textbox</option>
+                <option value="number">Number</option>
+                <option value="select">Select</option>
+                <option value="option">Option</option>
+              </select>
+            </lu>
+            <lu class="line">
+              <strong><label for="preset">Contract:</label></strong>
+            </lu>
+            <lu class="section">
+              <textarea
+                id="preset"
+                name="preset"
+                placeholder="Contract"
+                rows="5"
+              ></textarea>
+            </lu>
+            <ul class="controls">
+              <button
+                hx-post="/control/contract/add"
+                hx-target="#inner"
+                hx-swap="innerHTML"
+              >
+                Add New Contract
+              </button>
+            </ul>
+          </form>
+        </details>
+      </div>
+    </ul>
+  </details>
+
+  <div id="ContractSets">
+    <%- include('getContractSets', { sets: sets, isOpen: false }) %>
+  </div>
+</div>
+<script>
+  topup();
+  filter();
+</script>

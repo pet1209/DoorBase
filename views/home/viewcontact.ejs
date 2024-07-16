@@ -1,0 +1,103 @@
+<script>
+  topup();
+</script>
+<div class="content">
+  <div class="item">
+    <h1>Contact Submissions</h1>
+    <div class="inner">
+      <% if (data.length > 0) { %> <% data.forEach(function(submission) { %>
+
+      <div class="item" id="submission-<%= submission.id %>">
+        <details>
+          <summary>
+            <div class="subdropdown">
+              <lu
+                ><i class="ri-corner-down-right-line"></i> <%=
+                submission.firstName %> <%= submission.lastName %></lu
+              >
+              <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+            </div>
+          </summary>
+          <lu class="line">
+            <strong>Email:</strong><b> <%= submission.email %></b>
+          </lu>
+          <lu class="line">
+            <strong>Company:</strong><b> <%= submission.company %></b>
+          </lu>
+          <lu class="line">
+            <strong>Street Address:</strong
+            ><b> <%= submission.streetAddress %></b>
+          </lu>
+          <lu class="line">
+            <strong>City:</strong><b> <%= submission.city %></b>
+          </lu>
+          <lu class="line">
+            <strong>Country:</strong><b> <%= submission.country %></b>
+          </lu>
+          <lu class="line">
+            <strong>State:</strong><b> <%= submission.state %></b>
+          </lu>
+          <lu class="line">
+            <strong>Zip Code:</strong><b> <%= submission.zipCode %></b>
+          </lu>
+          <lu class="line">
+            <strong>Phone:</strong><b> <%= submission.phone %></b>
+          </lu>
+          <lu class="line">
+            <strong>Preferred Contact Method:</strong
+            ><b> <%= submission.contactMethod %></b>
+          </lu>
+          <lu class="line">
+            <strong>Category:</strong><b> <%= submission.category %></b>
+          </lu>
+          <lu class="line">
+            <strong>Other Category:</strong
+            ><b> <%= submission.otherCategory %></b>
+          </lu>
+          <lu class="line">
+            <strong>Project Start:</strong
+            ><b> <%= submission.projectStart %></b>
+          </lu>
+          <lu class="line">
+            <strong>Project Information Details:</strong
+            ><b> <%= submission.comments %></b>
+          </lu>
+          <lu class="line">
+            <strong>Email Offers:</strong><b> <%= submission.emailOffers %></b>
+          </lu>
+          <lu class="line">
+            <strong>Time:</strong><b> <%= submission.time %></b>
+          </lu>
+          <lu class="line">
+            <strong>IP Address:</strong><b> <%= submission.ipAddress %></b>
+          </lu>
+          <lu class="line">
+            <strong>User Agent:</strong><b> <%= submission.userAgent %></b>
+          </lu>
+          <ul class="controls">
+            <button hx-swap="outerHTML" hx-target="closest div">
+              Start Project
+            </button>
+            <button hx-swap="outerHTML" hx-target="closest div">Pin</button>
+            <button hx-swap="outerHTML" hx-target="closest div">Archive</button>
+            <button hx-swap="outerHTML" hx-target="closest div">More</button>
+
+            <button
+              hx-delete="/deletecontact/<%= submission.id %>"
+              hx-confirm="Are you sure you want to delete this submission?"
+              hx-swap="outerHTML"
+              hx-target="closest div"
+              id="delete"
+            >
+              Delete
+            </button>
+          </ul>
+        </details>
+      </div>
+
+      <% }) %> <% } else { %>
+      <p>No contact submissions found.</p>
+      <% } %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="editItem">
+    <details open>
+        <summary>
+            <div class="subdropdown">
+                <lu><i class="ri-file-list-2-line"></i> EDIT: [<%= contract.name %>]</lu>
+                <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+            </div>
+        </summary>
+        <br>
+        <form hx-post="/control/contract/save" hx-trigger="submit" hx-swap="outerHTML" hx-target="closest div">
+            <lu class="section">
+                <strong><label for="name<%= contract.id %>">Name:</label></strong>
+                <input type="text" id="name<%= contract.id %>" name="name" value="<%= contract.name %>" required>
+            </lu>
+            <lu class="section">
+                <strong><label for="type<%= contract.id %>">Type:</label></strong>
+                <select id="type<%= contract.id %>" name="type" required>
+                    <option value="text" <%= contract.type === 'text' ? 'selected' : '' %>>Text</option>
+                    <option value="textbox" <%= contract.type === 'textbox' ? 'selected' : '' %>>Textbox</option>
+                    <option value="number" <%= contract.type === 'number' ? 'selected' : '' %>>Number</option>
+                    <option value="select" <%= contract.type === 'select' ? 'selected' : '' %>>Select</option>
+                    <option value="option" <%= contract.type === 'option' ? 'selected' : '' %>>Option</option>
+                </select>
+            </lu>
+            <lu class="line">
+                <strong><label for="preset<%= contract.id %>">Contract:</label></strong>
+            </lu>
+            <lu class="section">
+
+                <textarea id="preset<%= contract.id %>" name="preset" placeholder="Contract" rows="5"><%= contract.preset %></textarea>
+            </lu>
+            <lu class="section">
+                <strong>Creation Date:</strong>
+                <b><%= contract.creationDate %></b>
+            </lu>
+            <lu class="section">
+                <strong>Edit Date:</strong>
+                <b><%= contract.editDate %></b>
+            </lu>
+            <lu class="section">
+                <strong>Author:</strong>
+                <b><%= contract.userName %></b>
+            </lu>
+            <ul class="controls">
+                <button type="submit">Save</button>
+                <button type="button" hx-get="/control/contract/get/<%= contract.id %>" hx-swap="outerHTML" hx-target="closest div">Cancel</button>
+                <button type="button" hx-delete="/control/contract/delete/<%= contract.id %>" hx-confirm="Are you sure you want to delete <%= contract.name %>?" hx-swap="outerHTML" hx-target="closest div">Delete</button>
+            </ul>
+            <input type="hidden" name="id" value="<%= contract.id %>">
+        </form>
+    </details>
+</div>

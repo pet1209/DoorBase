@@ -1,0 +1,39 @@
+<div class="content">
+  <div class="item">
+    <h1>Edit User</h1>
+
+    <form>
+      <lu class="section">
+        <strong>Username:</strong>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value="<%= user.username %>"
+          required
+        />
+      </lu>
+      <lu class="section">
+        <strong>Role:</strong>
+        <input
+          type="text"
+          id="role"
+          name="role"
+          value="<%= user.role %>"
+          required
+        />
+      </lu>
+
+      <ul class="controls">
+        <button
+          type="submit"
+          hx-post="/users/update/<%= user.id %>"
+          hx-swap="innerHTML"
+          hx-target="#inner"
+        >
+          Update
+        </button>
+      </ul>
+    </form>
+  </div>
+</div>

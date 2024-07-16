@@ -1,0 +1,40 @@
+<div class="content">
+  <div class="item">
+    <h1>Users</h1>
+    <div class="div-table">
+      <div class="div-thead">
+        <div class="div-tr">
+          <div class="div-th">ID</div>
+          <div class="div-th">Username</div>
+          <div class="div-th">Email</div>
+          <div class="div-th">Role</div>
+          <div class="div-th">Actions</div>
+        </div>
+      </div>
+      <div class="div-tbody">
+        <% users.forEach(user => { %>
+        <div class="div-tr">
+          <div class="div-td"><%= user.id %></div>
+          <div class="div-td"><%= user.username %></div>
+          <div class="div-td"><%= user.email %></div>
+          <div class="div-td"><%= user.role %></div>
+          <div class="div-td">
+            <button
+              type="submit"
+              hx-get="/users/edit/<%= user.id %>"
+              hx-swap="innerHTML"
+              hx-target="#inner"
+            >
+              Edit
+            </button>
+
+            <!-- <form action="/users/delete/<%= user.id %>" method="POST" style="display:inline;" onsubmit="return confirmDeletion();">
+                            <button type="submit" id="delete">Delete</button>
+                        </form> -->
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<details open class="editItem">
+  <summary>
+    <div class="dropdown">
+      <lu><i class="ri-function-add-line"></i> Create New Contract Set</lu>
+      <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+    </div>
+  </summary>
+
+  <ul class="inner">
+    <form id="ContractSetForm">
+      <input
+        type="hidden"
+        id="selected-NewCheckboxwatch"
+        name="selectedContracts"
+        value=""
+      />
+
+      <details open class="item">
+        <summary>
+          <div class="dropdown">
+            <lu><i class="ri-function-add-line"></i>Dital</lu>
+            <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+          </div>
+        </summary>
+
+        <lu class="section">
+          <strong><label for="name">Set Name:</label></strong>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Set Name"
+            required
+          />
+        </lu>
+      </details>
+
+      <details open class="item filter">
+        <summary>
+          <div class="dropdown">
+            <lu><i class="ri-function-add-line"></i>Available Contracts</lu>
+            <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+          </div>
+        </summary>
+
+        <lu class="section">
+          <strong>Filter:</strong>
+          <input type="text" placeholder="Type to filter..." />
+        </lu>
+
+        <div id="NewCheckboxwatch">
+          <% contracts.forEach(contract => { %>
+          <div id="<%= contract.name %>">
+            <lu class="section checkbox" id="<%= contract.name %>">
+              <strong>
+                <input
+                  type="checkbox"
+                  name="<%= contract.name %>"
+                  value="<%= contract.id %>"
+                />
+              </strong>
+              <b> <%= contract.name %></b>
+            </lu>
+          </div>
+          <% }) %>
+        </div>
+      </details>
+    </form>
+
+    <div class="item">
+      <div class="dropdown">
+        <lu><i class="ri-function-add-line"></i> Selected Contracts</lu>
+      </div>
+      <div id="output-NewCheckboxwatch"></div>
+    </div>
+  </ul>
+
+  <ul class="controls">
+    <button
+      hx-post="/control/contract/sets"
+      hx-target="closest div"
+      hx-swap="innerHTML"
+      hx-include="#ContractSetForm"
+    >
+      Create Set
+    </button>
+
+    <button
+      hx-get="/control/contract/sets/get"
+      hx-target="closest div"
+      hx-swap="innerHTML"
+    >
+      Cancel
+    </button>
+  </ul>
+
+  <script>
+    filter();
+    checkboxwatch("NewCheckboxwatch");
+  </script>
+</details>

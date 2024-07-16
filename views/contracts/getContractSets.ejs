@@ -1,0 +1,75 @@
+<details open class="item" id="contractssets">
+  <summary>
+    <div class="dropdown">
+      <ul>
+        <i class="ri-dashboard-line"></i>
+        Contract Sets
+      </ul>
+      <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+    </div>
+  </summary>
+
+  <ul class="inner">
+    <% sets.forEach(set => { %>
+
+    <div>
+      <details class="item">
+        <summary>
+          <div class="subdropdown">
+            <ul>
+              <i class="ri-dashboard-line"></i>
+              <%= set.name %>
+            </ul>
+            <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+          </div>
+        </summary>
+
+        <% set.contracts.forEach(contract => { %>
+
+        <lu class="line">
+          <strong>
+            <i class="ri-corner-down-right-line"></i> <%= contract.contractName
+            %> </strong
+          ><br />
+        </lu>
+
+        <% }) %>
+
+        <lu class="line">
+          <strong>Creation Date:</strong>
+          <b><%= set.creationDate %></b>
+        </lu>
+        <lu class="line">
+          <strong>Edit Date:</strong>
+          <b><%= set.editDate %></b>
+        </lu>
+        <lu class="line">
+          <strong>Author:</strong>
+          <b><%= set.userName %></b>
+        </lu>
+
+        <ul class="controls">
+          <button
+            hx-get="/control/contract/sets/edit/<%= set.id %>"
+            hx-swap="outerHTML"
+            hx-target="closest div"
+          >
+            Edit
+          </button>
+        </ul>
+      </details>
+    </div>
+
+    <% }) %>
+
+    <ul class="controls">
+      <button
+        hx-get="/control/contract/set/new/"
+        hx-swap="innerHTML"
+        hx-target="closest div"
+      >
+        Create New Contract Set
+      </button>
+    </ul>
+  </ul>
+</details>

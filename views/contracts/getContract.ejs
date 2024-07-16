@@ -1,0 +1,41 @@
+<div class="item">
+  <details>
+    <summary>
+      <div class="subdropdown">
+        <lu><i class="ri-file-list-2-line"></i> <%= contract.name %></lu>
+        <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+      </div>
+    </summary>
+    <lu class="line">
+      <strong>Type:</strong>
+      <b><%= contract.type %></b>
+    </lu>
+    <lu class="line">
+      <strong>Contract:</strong>
+    </lu>
+    <lu class="line">
+      <b><%= contract.preset %></b>
+    </lu>
+    <lu class="line">
+      <strong>Creation Date:</strong>
+      <b><%= contract.creationDate %></b>
+    </lu>
+    <lu class="line">
+      <strong>Edit Date:</strong>
+      <b><%= contract.editDate %></b>
+    </lu>
+    <lu class="line">
+      <strong>Author:</strong>
+      <b><%= contract.userName %></b>
+    </lu>
+    <ul class="controls">
+      <button
+        hx-get="control/contract/edit<%= contract.id %>"
+        hx-swap="outerHTML"
+        hx-target="closest div"
+      >
+        Edit
+      </button>
+    </ul>
+  </details>
+</div>

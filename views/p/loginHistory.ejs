@@ -1,0 +1,28 @@
+<div class="content">
+  <div class="item">
+    <h1>Login History</h1>
+
+    <div class="div-table">
+      <div class="div-thead">
+        <div class="div-tr">
+          <div class="div-th">ID</div>
+          <div class="div-th">Username</div>
+          <div class="div-th">Login Time</div>
+          <div class="div-th">IP Address</div>
+          <div class="div-th">User Agent</div>
+        </div>
+      </div>
+      <div class="div-tbody">
+        <% loginHistory.forEach(entry => { %>
+        <div class="div-tr">
+          <div class="div-td"><%= entry.id %></div>
+          <div class="div-td"><%= entry.username %></div>
+          <div class="div-td"><%= entry.login_time %></div>
+          <div class="div-td"><%= entry.ip_address %></div>
+          <div class="div-td"><%= entry.user_agent %></div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>

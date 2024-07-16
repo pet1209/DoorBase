@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/htmx.js"></script>
+    <link href="css/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/css" />
+    <title>DoorBase.io</title>
+    <script>
+        (function() {
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.add('light');
+            }
+        })();
+    </script>
+  </head>
+  <body>
+    <header class="header" id="top">
+      <nav class="nav container">
+        <div class="nav__data">
+          <a
+            href="#"
+            class="nav__logo"
+            hx-get="/page/home"
+            hx-swap="innerHTML"
+            hx-target="#inner"
+            >DoorBase</a
+          >
+          <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line nav__burger"></i>
+            <i class="ri-close-line nav__close"></i>
+          </div>
+        </div>
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <% if (user) { %>
+            <li>
+              <a
+                href="#"
+                hx-get="/Control/product"
+                hx-swap="innerHTML"
+                hx-target="#inner"
+                class="nav__link"
+              >
+                <i class="ri-folder-6-line"></i> Projects
+              </a>
+            </li>
+            <li class="dropdown__item">
+              <a href="#" class="nav__link">
+                <i class="ri-settings-5-line"></i> Setup
+                <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+              </a>
+              <ul class="dropdown__menu">
+                <li>
+                  <a
+                    href="#"
+                    class="dropdown__link"
+                    hx-get="/Control/product"
+                    hx-swap="innerHTML"
+                    hx-target="#inner"
+                  >
+                    <i class="ri-book-read-line"></i> Products
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dropdown__link"
+                    hx-get="/Control/contract"
+                    hx-swap="innerHTML"
+                    hx-target="#inner"
+                  >
+                    <i class="ri-book-read-line"></i> Contracts
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown__item">
+              <a href="#" class="nav__link">
+                <i class="ri-account-box-line"></i> Users
+                <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+              </a>
+              <ul class="dropdown__menu">
+                <li>
+                  <a
+                    href="#"
+                    class="dropdown__link"
+                    hx-get="/register"
+                    hx-swap="innerHTML"
+                    hx-target="#inner"
+                  >
+                    <i class="ri-user-add-line"></i> Register
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dropdown__link"
+                    hx-get="/users"
+                    hx-swap="innerHTML"
+                    hx-target="#inner"
+                  >
+                    <i class="ri-group-line"></i> Users
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dropdown__link"
+                    hx-get="/profile"
+                    hx-swap="innerHTML"
+                    hx-target="#inner"
+                  >
+                    <i class="ri-user-line"></i> <%= user.username %>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dropdown__link"
+                    hx-get="/logout"
+                    hx-swap="innerHTML"
+                    hx-target="#inner"
+                  >
+                    <i class="ri-door-line"></i> Logout
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown__item">
+              <a href="#" class="nav__link">
+                <i class="ri-line-chart-line"></i> Analytics
+                <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+              </a>
+              <ul class="dropdown__menu">
+                <li>
+                  <a
+                    href="#"
+                    class="dropdown__link"
+                    hx-get="/contact"
+                    hx-swap="innerHTML"
+                    hx-target="#inner"
+                  >
+                    <i class="ri-mail-open-line"></i> Contact Submissions
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dropdown__link"
+                    hx-get="/login-history"
+                    hx-swap="innerHTML"
+                    hx-target="#inner"
+                  >
+                    <i class="ri-user-location-line"></i> Login History
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dropdown__link"
+                    hx-get="/site-activity"
+                    hx-swap="innerHTML"
+                    hx-target="#inner"
+                  >
+                    <i class="ri-robot-3-line"></i> Site Activity
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <% } else { %>
+            <li>
+              <a
+                href="#"
+                hx-get="/page/company"
+                hx-swap="innerHTML"
+                hx-target="#inner"
+                class="nav__link"
+              >
+                <i class="ri-government-line"></i> Company
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                hx-get="/page/service"
+                hx-swap="innerHTML"
+                hx-target="#inner"
+                class="nav__link"
+              >
+                <i class="ri-export-line"></i> Service
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                hx-get="/page/products"
+                hx-swap="innerHTML"
+                hx-target="#inner"
+                class="nav__link"
+              >
+                <i class="ri-export-line"></i> Products
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="nav__link"
+                hx-get="/page/contact"
+                hx-swap="innerHTML"
+                hx-target="#inner"
+              >
+                <i class="ri-chat-new-line"></i> Contact
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="nav__link"
+                hx-get="/login"
+                hx-swap="innerHTML"
+                hx-target="#inner"
+              >
+                <i class="ri-user-line"></i> Login
+              </a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+        <div class="theme-switch">
+          <input
+            type="checkbox"
+            id="toggle-theme"
+            class="theme-switch__input"
+          />
+          <label for="toggle-theme" class="theme-switch__label"></label>
+        </div>
+      </nav>
+    </header>
+
+    <div
+      class="parallax"
+      id="inner"
+      hx-trigger="load"
+      hx-get="/page/home"
+      hx-swap="innerHTML"
+    >
+      Loading
+    </div>
+
+    <script src="js/m.js"></script>
+  </body>
+</html>

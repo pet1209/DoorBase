@@ -1,0 +1,120 @@
+<div class="editItem">
+  <details open>
+    <summary>
+      <div class="dropdown">
+        <lu><i class="ri-function-add-line"></i> Edit Contract Set</lu>
+        <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+      </div>
+    </summary>
+
+    <ul class="inner">
+      <details open class="item">
+        <summary>
+          <div class="dropdown">
+            <lu><i class="ri-function-add-line"></i>Details</lu>
+            <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+          </div>
+        </summary>
+        <form id="ContractSetForm<%= contractSet.id %>">
+          <input
+            type="hidden"
+            id="selected-checkboxwatch<%= contractSet.id %>"
+            name="selectedContracts"
+            value="<%= contractSet.contracts.map(contract => contract.id).join(',') %>"
+          />
+
+          <lu class="section">
+            <strong><label for="name">Set Name:</label></strong>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value="<%= contractSet.name %>"
+              placeholder="Set Name"
+              required
+            />
+          </lu>
+        </form>
+        <ul class="controls">
+          <br />
+        </ul>
+      </details>
+
+      <details open class="item filter">
+        <summary>
+          <div class="dropdown">
+            <lu><i class="ri-function-add-line"></i>Available Contracts</lu>
+            <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+          </div>
+        </summary>
+
+        <lu class="section">
+          <strong>Filter:</strong>
+          <input type="text" placeholder="Type to filter..." />
+        </lu>
+
+        <div id="checkboxwatch<%= contractSet.id %>">
+          <% contracts.forEach(contract => { %>
+          <div>
+            <lu class="section checkbox" id="<%= contract.name %>">
+              <strong>
+                <input type="checkbox" name="<%= contract.name %>" value="<%=
+                contract.id %>" <% if (contractSet.contracts.some(c =>
+                c.contractId === contract.id)) { %> checked <% } %>>
+              </strong>
+              <b><%= contract.name %></b>
+            </lu>
+          </div>
+          <% }) %>
+
+          <ul class="controls">
+            <br />
+          </ul>
+        </div>
+      </details>
+
+      <div class="item">
+        <div class="dropdown">
+          <lu><i class="ri-function-add-line"></i> Selected Contracts</lu>
+        </div>
+        <div id="output-checkboxwatch<%= contractSet.id %>"></div>
+        <ul class="controls">
+          <br />
+        </ul>
+      </div>
+    </ul>
+
+    <ul class="controls">
+      <button
+        hx-post="/control/contract/set/save/<%= contractSet.id %>"
+        hx-target="closest div"
+        hx-swap="outerHTML"
+        hx-include="#ContractSetForm<%= contractSet.id %>"
+      >
+        Save Changes
+      </button>
+      <button
+        hx-get="/control/contract/set/get/<%= contractSet.id %>"
+        hx-target="closest div"
+        hx-swap="outerHTML"
+      >
+        Cancel
+      </button>
+      <button
+        type="button"
+        hx-delete="/control/contract/set/delete/<%= contractSet.id %>"
+        hx-confirm="are you sure you want to delete"
+        hx-swap="outerHTML"
+        hx-target="closest div"
+        id="delete"
+      >
+        Delete
+      </button>
+    </ul>
+
+    <script>
+      filter();
+      checkboxwatch("checkboxwatch<%= contractSet.id %>");
+    </script>
+  </details>
+</div>

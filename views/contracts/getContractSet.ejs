@@ -1,0 +1,39 @@
+<details open class="item">
+  <summary>
+    <div class="subdropdown">
+      <%= set.name %><i class="ri-arrow-down-s-line dropdown__arrow"></i>
+    </div>
+  </summary>
+
+  <% set.contracts.forEach(contract => { %>
+  <lu class="line">
+    <strong
+      ><i class="ri-corner-down-right-line"></i> <%= contract.contractName
+      %></strong
+    ><br />
+  </lu>
+  <% }) %>
+
+  <lu class="line">
+    <strong>Creation Date:</strong>
+    <b><%= set.creationDate %></b>
+  </lu>
+  <lu class="line">
+    <strong>Edit Date:</strong>
+    <b><%= set.editDate %></b>
+  </lu>
+  <lu class="line">
+    <strong>Author:</strong>
+    <b><%= set.userName %></b>
+  </lu>
+
+  <ul class="controls">
+    <button
+      hx-get="/control/contract/sets/edit/<%= set.id %>"
+      hx-swap="outerHTML"
+      hx-target="closest div"
+    >
+      Edit
+    </button>
+  </ul>
+</details>

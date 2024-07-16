@@ -1,0 +1,30 @@
+<div class="content">
+  <div class="item">
+    <h1>Site Activity</h1>
+
+    <div class="div-table">
+      <div class="div-thead">
+        <div class="div-tr">
+          <div class="div-th">ID</div>
+          <div class="div-th">Username</div>
+          <div class="div-th">Action</div>
+          <div class="div-th">Page</div>
+          <div class="div-th">IP Address</div>
+          <div class="div-th">Time</div>
+        </div>
+      </div>
+      <div class="div-tbody">
+        <% siteActivity.forEach(entry => { %>
+        <div class="div-tr">
+          <div class="div-td"><%= entry.id %></div>
+          <div class="div-td"><%= entry.username %></div>
+          <div class="div-td"><%= entry.action %></div>
+          <div class="div-td"><%= entry.page %></div>
+          <div class="div-td"><%= entry.ip %></div>
+          <div class="div-td"><%= entry.time %></div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>

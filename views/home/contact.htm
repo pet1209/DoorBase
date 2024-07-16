@@ -1,0 +1,193 @@
+<script>
+  topup();
+</script>
+<div class="content">
+  <div class="item">
+    <ul class="inner">
+      <h1>Contact Us</h1>
+      <p>
+        If you have a question or would like additional information please do
+        not call us, visit one of our showrooms, email us at
+        <a href="mailto:[email protected]">email</a>, or fill out the form
+        below.
+      </p>
+    </ul>
+  </div>
+  <div class="item">
+    <h1>Contact form</h1>
+    <form
+      hx-put="/submitcontactform"
+      hx-trigger="submit"
+      hx-target="#inner"
+      hx-swap="innerHTML"
+    >
+      <div class="section">
+        <label for="firstName"><strong>First Name:</strong></label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          placeholder="First Name*"
+          title="First Name*"
+          required
+        />
+      </div>
+      <div class="section">
+        <label for="lastName"><strong>Last Name:</strong></label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          placeholder="Last Name*"
+          title="Last Name*"
+          required
+        />
+      </div>
+      <div class="section">
+        <label for="email"><strong>Email:</strong></label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email*"
+          title="Email*"
+          required
+        />
+      </div>
+      <div class="section">
+        <label for="company"><strong>Company:</strong></label>
+        <input
+          type="text"
+          id="company"
+          name="company"
+          placeholder="Company"
+          title="Company"
+        />
+      </div>
+      <div class="section">
+        <label for="StreetAddress"><strong>Street Address:</strong></label>
+        <input
+          type="text"
+          id="StreetAddress"
+          name="StreetAddress"
+          placeholder="Street Address"
+          title="Street Address"
+        />
+      </div>
+      <div class="section">
+        <label for="city"><strong>City:</strong></label>
+        <input
+          type="text"
+          id="city"
+          name="city"
+          placeholder="City"
+          title="City"
+        />
+      </div>
+      <div class="section">
+        <label for="country"><strong>Country:</strong></label>
+        <select id="country" name="country">
+          <option value="0">Select Country</option>
+        </select>
+      </div>
+      <div class="section">
+        <label for="state"><strong>State:</strong></label>
+        <select id="state" name="state">
+          <option value="0">Select State/Province</option>
+        </select>
+      </div>
+      <div class="section">
+        <label for="ZipCode"><strong>Zip Code:</strong></label>
+        <input
+          type="text"
+          id="ZipCode"
+          name="ZipCode"
+          placeholder="Zip Code"
+          title="Zip Code"
+        />
+      </div>
+      <div class="section">
+        <label for="phone"><strong>Phone:</strong></label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Phone"
+          title="Phone"
+        />
+      </div>
+      <div class="section">
+        <label for="contactMethod"
+          ><strong>Preferred Contact Method</strong></label
+        >
+        <select id="contactMethod" name="contactMethod">
+          <option value="email">Email</option>
+          <option value="phone">Phone</option>
+          <option value="text">Text Message</option>
+          <option value="videoCall">Video Call</option>
+          <option value="inPerson">In Person</option>
+        </select>
+      </div>
+      <div class="section">
+        <label for="category"
+          ><strong>What category best describes you?</strong></label
+        >
+        <select id="category" name="category">
+          <option value="architect">Architect</option>
+          <option value="customBuilder">Custom Builder</option>
+          <option value="builder">Builder</option>
+          <option value="designer">Designer</option>
+          <option value="developer">Developer</option>
+          <option value="installer">Installer</option>
+          <option value="remodeler">Remodeler</option>
+          <option value="homeowner">Homeowner</option>
+          <option value="dealer">Dealer</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="section">
+        <label for="otherCategory"><strong>Other Category</strong></label>
+        <input
+          type="text"
+          id="otherCategory"
+          name="otherCategory"
+          placeholder="If other, please specify."
+          title="If other, please specify."
+        />
+      </div>
+      <div class="section">
+        <label for="projectStart"><strong>Start Timeline</strong></label>
+        <select id="projectStart" name="projectStart">
+          <option value="immediate">Immediate</option>
+          <option value="within1Month">Within the next month</option>
+          <option value="1to3Months">1 to 3 months</option>
+          <option value="3to6Months">3 to 6 months</option>
+          <option value="6to12Months">6 to 12 months</option>
+          <option value="moreThan1Year">More than 1 year</option>
+          <option value="ongoing">Multiple ongoing projects</option>
+        </select>
+      </div>
+      <div class="section">
+        <label for="comments"
+          ><strong>Project Information Details:</strong></label
+        >
+        <textarea id="comments" name="comments" rows="10"></textarea>
+      </div>
+      <div class="section checkpoint">
+        <input
+          type="checkbox"
+          id="emailOffers"
+          name="emailOffers"
+          value="yes"
+        />
+        <label for="emailOffers"
+          ><strong>News and offers from DoorBase.</strong></label
+        >
+      </div>
+      <div class="controls">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="js/contact.js"></script>

@@ -1,0 +1,38 @@
+<div class="content">
+  <div class="item">
+    <h1>Edit Profile</h1>
+    <form action="/profile" method="POST" class="form-style">
+      <lu class="section">
+        <strong>Username:</strong>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value="<%= user.username %>"
+          required
+        />
+      </lu>
+      <lu class="section">
+        <strong>New Password:</strong>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Leave blank to keep current password"
+        />
+      </lu>
+      <lu class="section">
+        <strong>Confirm New Password:</strong>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder="Leave blank to keep current password"
+        />
+      </lu>
+      <ul class="controls">
+        <button type="submit">Save Changes</button>
+      </ul>
+    </form>
+  </div>
+</div>
